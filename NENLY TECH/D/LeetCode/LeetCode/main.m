@@ -32,6 +32,15 @@
  5、如果left=0时，平均终止，符合的数量就是0-current之间，如果当前平均值 < w,total = current,如果>=w，total = current + 1
  6、current = 数组数量 -1，平均终止，符合的数量就是0-current之间，如果当前平均值 < w,total = current,如果>=w，total = current + 1
  
+ 
+ 快速排序的实现思路：
+ 1、 首先找到一个基准元素pivot，一般取中间位置的元素
+ 2、用两个指针i,j指向left、right
+ 3、在while循环比较 i对应的元素 和 基准元素pivot ，如果 i对应的元素 小于 基准元素pivot ，i++
+ 4、在while循环比较 j对应的元素 和 基准元素pivot ，如果 j对应的元素 大于 基准元素pivot ，j--
+ 5、否则就交换i，j对应的元素，i++,j--，这样就确定了pivot左边的比自己小，pivot右边比自己大，pivot元素的位置确定了，把数列分成两段
+ 6、对left - >i ,j - >right ，两个段再次进行递归排序
+ 
  网上其他的做法：
  */
 
@@ -48,7 +57,7 @@ double calculateAverage(int nums[],int fromIndex,int toIndex) {
     return total / (toIndex - fromIndex + 1);
 }
 
-//对数组元素进行排序
+//对数组元素进行快速排序
 void quickSort(int array[],int left ,int right){
     int i = left, j = right;
         int tmp;
