@@ -62,7 +62,7 @@ public:
          }
         
         //左------>右扫描
-        int rightReverseIndex = 0;
+        int rightReverseIndex = -1;
         int max = array[0];
         for (int i = 0; i< array.size();i++) {
             //1、往后扫描只要比最大值小，就是逆序对，记录当前扫描元素的位置
@@ -76,9 +76,11 @@ public:
             }
         }
         
+        if (rightReverseIndex == -1) return {-1, -1};
+        
         //右------>左扫描
         int length = (int)array.size();
-        int leftReverseIndex = length-1;
+        int leftReverseIndex = -1;
         int min = array[length-1];
         for (int i = length -1; i>=0 ;i--) {
             //1、往前扫描只要比最最值大，就是逆序对，记录当前扫描元素的位置
@@ -92,7 +94,6 @@ public:
             }
         }
         //3、直到扫描到最后，记录的位置就是最后一个逆序对
-        if (leftReverseIndex > rightReverseIndex) return {-1,-1};
         return {leftReverseIndex, rightReverseIndex};
     }
 }solution;
